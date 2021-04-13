@@ -1,1 +1,1 @@
-Sampel Projet for Spring data JPA with In Memory H2 database
+Sample Project for Spring data JPA with In Memory H2 database
