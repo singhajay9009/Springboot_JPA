@@ -88,7 +88,6 @@ public class HibernateDemoApplication {
 			System.out.println("Employee from list2 is: " + e);
 		}
 
-
 		transaction.commit();
 		}
 
