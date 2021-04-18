@@ -1,9 +1,7 @@
 package com.ajay.jpa.hibernate.demo;
 
 import com.ajay.jpa.hibernate.demo.entity.Employee;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
@@ -34,8 +32,7 @@ public class HibernateDemoApplication {
 		Transaction transaction = session.beginTransaction();
 		try{
 			//SpringApplication.run(HibernateDemoApplication.class, args);
-
-
+			
 
 			String inputString = "11-11-2012";
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -72,13 +69,30 @@ public class HibernateDemoApplication {
 
 		query1.setParameter("date", LocalDate.parse("11-11-2013",formatter));
 
-		List<Employee> employeeList2 = query1.getResultList();
+		List<Object> employeeList2 = query1.list();
 
-			for(Employee e: employeeList2){
-				System.out.println("Employee is: " + e);
-			}
-			transaction.commit();
+		for(Object e: employeeList2){
+			System.out.println("Employee is: " + e);
 		}
+
+
+		// Query2 operations
+			Query query2 = session.createSQLQuery(
+				"Select * from employee where emp_id > :empId")
+				.setParameter("empId", 3)
+				.addEntity(Employee.class);
+
+		List<Employee> result = query2.getResultList();
+
+		for(Employee e: result){
+			System.out.println("Employee from list2 is: " + e);
+		}
+
+
+		transaction.commit();
+		}
+
+	//	SQLQuery sqlQuery
 		finally{
 
 			session.close();
