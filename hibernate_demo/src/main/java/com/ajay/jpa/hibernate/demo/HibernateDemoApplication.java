@@ -1,18 +1,19 @@
 package com.ajay.jpa.hibernate.demo;
 
-import com.ajay.jpa.hibernate.demo.entity.Employee;
-import org.hibernate.*;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-
-import org.hibernate.query.Query;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 //import javax.persistence.Query;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+
+import com.ajay.jpa.hibernate.demo.entity.Employee;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class HibernateDemoApplication {
@@ -84,7 +85,7 @@ public class HibernateDemoApplication {
 
 		List<Employee> result = query2.getResultList();
 
-		for(Employee e: result){
+		for(Employee e: result){ 
 			System.out.println("Employee from list2 is: " + e);
 		}
 
