@@ -66,6 +66,7 @@ public class HibernateDemoApplication {
 			Query query = session.createQuery("from Employee");
 			List<Employee> employeeList = query.getResultList();
 
+		// HQL ---- Hibernate Query Language
 		Query query1 = session.createQuery("from Employee where joiningDate >= :date order by firstName");
 
 		query1.setParameter("date", LocalDate.parse("11-11-2013",formatter));
@@ -77,7 +78,7 @@ public class HibernateDemoApplication {
 		}
 
 
-		// Query2 operations
+		// Query2 operations // createSQLQuery method is used to create native SQL queries
 			Query query2 = session.createSQLQuery(
 				"Select * from employee where emp_id > :empId")
 				.setParameter("empId", 3)
@@ -88,6 +89,20 @@ public class HibernateDemoApplication {
 		for(Employee e: result){ 
 			System.out.println("Employee from list2 is: " + e);
 		}
+
+
+		System.out.println("----- Before start--------");
+		Query query3 = session.createQuery("from Employee where emp_id == :empId");
+		query3.setParameter("empId", 1);
+		List<Object> reslt = query3.list();
+
+		System.out.println("------Entering in last-----------");
+
+		for(Object e: reslt){
+			Employee emp = (Employee)e;
+			System.out.println("Fetched name of employee is: " + emp.getEmp_id());
+		}
+		
 
 		transaction.commit();
 		}
