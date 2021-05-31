@@ -91,7 +91,6 @@ public class HibernateDemoApplication {
 		}
 
 
-		System.out.println("----- Before start--------");
 		Query query3 = session.createQuery("from Employee where emp_id = 1");
 	//	query3.setParameter("empId", 1);
 		List<Object> reslt = query3.list();
