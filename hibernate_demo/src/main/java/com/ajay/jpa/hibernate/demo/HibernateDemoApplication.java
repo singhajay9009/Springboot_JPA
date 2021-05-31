@@ -92,15 +92,15 @@ public class HibernateDemoApplication {
 
 
 		System.out.println("----- Before start--------");
-		Query query3 = session.createQuery("from Employee where emp_id == :empId");
-		query3.setParameter("empId", 1);
+		Query query3 = session.createQuery("from Employee where emp_id = 1");
+	//	query3.setParameter("empId", 1);
 		List<Object> reslt = query3.list();
 
 		System.out.println("------Entering in last-----------");
 
 		for(Object e: reslt){
 			Employee emp = (Employee)e;
-			System.out.println("Fetched name of employee is: " + emp.getEmp_id());
+			System.out.println("Fetched name of employee is: " + emp.getFirstName());
 		}
 		
 
