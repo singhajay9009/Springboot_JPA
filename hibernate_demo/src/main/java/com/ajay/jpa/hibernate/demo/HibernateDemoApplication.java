@@ -105,7 +105,6 @@ public class HibernateDemoApplication {
             for(Object e: reslt){
 			System.out.println("Fetched first name of employee is: " + e);
 		}
-		
 
 		transaction.commit();
 		}
