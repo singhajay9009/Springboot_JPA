@@ -33,7 +33,6 @@ public class HibernateDemoApplication {
 		Transaction transaction = session.beginTransaction();
 		try{
 			//SpringApplication.run(HibernateDemoApplication.class, args);
-			
 
 			String inputString = "11-11-2012";
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -63,8 +62,8 @@ public class HibernateDemoApplication {
 //			session.save(employee2);
 //			session.save(employee3);
 
-			Query query = session.createQuery("from Employee");
-			List<Employee> employeeList = query.getResultList();
+		Query query = session.createQuery("from Employee");
+		List<Employee> employeeList = query.getResultList();
 
 		// HQL ---- Hibernate Query Language
 		Query query1 = session.createQuery("from Employee where joiningDate >= :date order by firstName");
