@@ -77,7 +77,6 @@ public class HibernateDemoApplication {
 			System.out.println("Employee is: " + e);
 		}
 
-
 		// Query2 operations // createSQLQuery method is used to create native SQL queries
 			Query query2 = session.createSQLQuery(
 				"Select * from employee where emp_id > :empId")
@@ -96,12 +95,7 @@ public class HibernateDemoApplication {
 
 		System.out.println("------Entering in last-----------");
 
-//		for(Object e: reslt){
-//			Employee emp = (Employee)e;
-//			System.out.println("Fetched name of employee is: " + emp.getFirstName());
-//		}
-
-            for(Object e: reslt){
+		for(Object e: reslt){
 			System.out.println("Fetched first name of employee is: " + e);
 		}
 
