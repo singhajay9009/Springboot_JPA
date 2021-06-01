@@ -90,7 +90,6 @@ public class HibernateDemoApplication {
 			System.out.println("Employee from list2 is: " + e);
 		}
 
-
 		Query query3 = session.createQuery("Select firstName from Employee where emp_id = 1");
 	//	query3.setParameter("empId", 1);
 		List<Object> reslt = query3.list();
@@ -109,7 +108,6 @@ public class HibernateDemoApplication {
 		transaction.commit();
 		}
 
-	//	SQLQuery sqlQuery
 		finally{
 
 			session.close();
