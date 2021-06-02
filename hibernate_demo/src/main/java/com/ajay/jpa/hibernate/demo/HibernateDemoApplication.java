@@ -107,7 +107,12 @@ public class HibernateDemoApplication {
 		}
 
 		// using get method to retrieve a specific Object
-		Employee emp = session.get(Employee.class, 2);
+		Employee emp = session.get(Employee.class, 2); // It fires the query in db. It retirves the rela object
+
+		Employee emp2 = session.load(Employee.class, 3); // It does not fire the query in db. It gives a proxy object.
+			// It fires the query only when obj is used e.g. printing it using Syso.
+
+		// Also get returns null if no obj found, whereas load throws noObjectFound exception.
 
 		System.out.println("Employee is: " + emp);
 
