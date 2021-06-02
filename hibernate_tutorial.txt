@@ -1,0 +1,9 @@
+hibernate--
+
+object state-
+ on creation new -- Transient
+ on save() /persist() -- Persistent // once persisted any change in object will be implicitly persisted in database as well.
+ on detach()  -- Detached
+ on remove()  -- Removed
+
+  - When we do get() then we fetch the object , but it also gets into persisted state.

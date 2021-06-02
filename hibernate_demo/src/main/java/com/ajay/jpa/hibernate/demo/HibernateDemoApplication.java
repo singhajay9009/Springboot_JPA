@@ -1,12 +1,12 @@
 package com.ajay.jpa.hibernate.demo;
 
-//import javax.persistence.Query;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 import com.ajay.jpa.hibernate.demo.entity.Employee;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -32,9 +32,6 @@ public class HibernateDemoApplication {
 
 		Transaction transaction = session.beginTransaction();
 		try{
-			//SpringApplication.run(HibernateDemoApplication.class, args);
-			
-
 			String inputString = "11-11-2012";
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			LocalDate inputDate = LocalDate.parse(inputString,formatter);
@@ -63,8 +60,8 @@ public class HibernateDemoApplication {
 //			session.save(employee2);
 //			session.save(employee3);
 
-			Query query = session.createQuery("from Employee");
-			List<Employee> employeeList = query.getResultList();
+		Query query = session.createQuery("from Employee");
+		List<Employee> employeeList = query.getResultList();
 
 		// HQL ---- Hibernate Query Language
 		Query query1 = session.createQuery("from Employee where joiningDate >= :date order by firstName");
@@ -77,42 +74,66 @@ public class HibernateDemoApplication {
 			System.out.println("Employee is: " + e);
 		}
 
-
 		// Query2 operations // createSQLQuery method is used to create native SQL queries
 			Query query2 = session.createSQLQuery(
-				"Select * from employee where emp_id > :empId")
+				"Select * from employee where emp_id < :empId")
 				.setParameter("empId", 3)
 				.addEntity(Employee.class);
 
 		List<Employee> result = query2.getResultList();
 
-		for(Employee e: result){ 
+		for(Employee e: result){
 			System.out.println("Employee from list2 is: " + e);
 		}
 
-
 		Query query3 = session.createQuery("Select firstName from Employee where emp_id = 1");
 	//	query3.setParameter("empId", 1);
-		List<Object> reslt = query3.list();
+	//	List<Object> reslt = query3.list();
 
-		System.out.println("------Entering in last-----------");
+		String name = (String)query3.uniqueResult();
 
-//		for(Object e: reslt){
-//			Employee emp = (Employee)e;
-//			System.out.println("Fetched name of employee is: " + emp.getFirstName());
-//		}
+		System.out.println("First name for employee with id = 1 is: " + name);
 
-            for(Object e: reslt){
-			System.out.println("Fetched first name of employee is: " + e);
+		// Fetching only respective columns
+
+		Query query4 = session.createSQLQuery("Select first_name, last_name from employee where emp_id >2");
+		query4.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+
+		List employees = query4.list();
+
+		for(Object o: employees){
+			Map m = (Map)o;
+			System.out.println("First name is: " + m.get("first_name") + ". Last name is: " + m.get("last_name"));
 		}
+
+		// using get method to retrieve a specific Object
+		Employee emp = session.get(Employee.class, 2); // It fires the query in db. It retirves the rela object
+
+		Employee emp2 = session.load(Employee.class, 3); // It does not fire the query in db. It gives a proxy object.
+			// It fires the query only when obj is used e.g. printing it using Syso.
+
+		// Also get returns null if no obj found, whereas load throws noObjectFound exception.
+
+		System.out.println("Employee is: " + emp);
 
 		transaction.commit();
+
+		// Comment all above lines starting from try block to observe 2nd level caching easily
+		Employee empFromSessionOne = session.get(Employee.class, 4);
+		System.out.println("Employee from session one with emp_id:4 is: " + empFromSessionOne);
+		session.close();
+
+		Session session2 = sessionFactory.openSession();
+		Employee empFromSessionTwo = session2.get(Employee.class, 4);
+		System.out.println("Employee from session two with emp_id:4 is: " + empFromSessionTwo);
+		session2.close();
 		}
 
-	//	SQLQuery sqlQuery
+
+
 		finally{
 
-			session.close();
+			//session.close();
 			//sessionFactory.close();
 		}
 	}

@@ -1,0 +1,39 @@
+Git commit - Best Practice
+
+1. Create a feature from develop
+2. Create a private feature branch
+3. Do as many commits as you wish in private feature branch
+4. Merge your commits from private to main feature branch when you think you have a meaningful commit which adds a required change in your code
+5. Steps to do do-
+    git checkout feature/main
+    git merge --squash feature/private  //It will just squash all the commits in feature/private to one
+    git commit -m "a combined commit"  // This is when we are going to add a commit to feature/main
+
+6. This is doing this by 'merge'. However we have another way as well to do so by using 'rebase'
+7. Rebase  is a cleaner way to keep linear history.
+8. So basically here we want to add commits in feature/main from feature/private.
+9. By doing rebase here we would be bringing all the commits in feature/main since the point they were last synchronized.
+10. steps for rebase-
+      
+      Imagine main had commits m1, m2. private had been cut off from main after commit m2, so till m2 they were synchronized. Now private has 2 more commits commits f1, f2. Later main has 1 more commit m3. 
+     Now lets do rebase of private against main-
+      git checkout feature/private
+      git rebase feature/main
+      
+      This will change private in following way-
+
+      feature/private (before rebase) :   m1-->m2-->f1--f2
+      feature/private ( fater rebase) :   m1-->m2-->m3-->f1-->f2
+      
+      So rebasing moves private to latest commit in main (m3) and then add all new commits in private on top of m3.
+
+      So far only private has been synced with main, but we also need to sync main with private. We need to do same steps in main as well.
+      
+      git checkout feature/main
+      git rebase feature/private
+
+      feature/main (before rebase) : m1-->m2-->m3
+      feature/main  (after rebase) : m1-->m2-->m3-->f1--f2
+    
+      Now if we notice our git graph will look linear and cleaner, also both private and main are at same level now.
+    
