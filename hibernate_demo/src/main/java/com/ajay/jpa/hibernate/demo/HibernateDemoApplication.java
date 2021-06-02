@@ -106,8 +106,15 @@ public class HibernateDemoApplication {
 			System.out.println("First name is: " + m.get("first_name") + ". Last name is: " + m.get("last_name"));
 		}
 
+		// using get method to retrieve a specific Object
+		Employee emp = session.get(Employee.class, 2);
+
+		System.out.println("Employee is: " + emp);
+
 		transaction.commit();
 		}
+
+
 
 		finally{
 
