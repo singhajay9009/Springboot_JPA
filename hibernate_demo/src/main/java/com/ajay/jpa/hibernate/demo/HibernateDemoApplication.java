@@ -76,13 +76,13 @@ public class HibernateDemoApplication {
 
 		// Query2 operations // createSQLQuery method is used to create native SQL queries
 			Query query2 = session.createSQLQuery(
-				"Select * from employee where emp_id > :empId")
+				"Select * from employee where emp_id < :empId")
 				.setParameter("empId", 3)
 				.addEntity(Employee.class);
 
 		List<Employee> result = query2.getResultList();
 
-		for(Employee e: result){ 
+		for(Employee e: result){
 			System.out.println("Employee from list2 is: " + e);
 		}
 
@@ -118,11 +118,14 @@ public class HibernateDemoApplication {
 
 		transaction.commit();
 
+		// Comment all above lines starting from try block to observe 2nd level caching easily
 		Employee empFromSessionOne = session.get(Employee.class, 4);
+		System.out.println("Employee from session one with emp_id:4 is: " + empFromSessionOne);
 		session.close();
 
 		Session session2 = sessionFactory.openSession();
 		Employee empFromSessionTwo = session2.get(Employee.class, 4);
+		System.out.println("Employee from session two with emp_id:4 is: " + empFromSessionTwo);
 		session2.close();
 		}
 
@@ -130,7 +133,7 @@ public class HibernateDemoApplication {
 
 		finally{
 
-			session.close();
+			//session.close();
 			//sessionFactory.close();
 		}
 	}
