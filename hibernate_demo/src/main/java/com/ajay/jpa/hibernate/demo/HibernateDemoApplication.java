@@ -86,13 +86,15 @@ public class HibernateDemoApplication {
 
 		Query query3 = session.createQuery("Select firstName from Employee where emp_id = 1");
 	//	query3.setParameter("empId", 1);
-		List<Object> reslt = query3.list();
+	//	List<Object> reslt = query3.list();
 
-		System.out.println("------Entering in last-----------");
+		String name = (String)query3.uniqueResult();
 
-		for(Object e: reslt){
-			System.out.println("Fetched first name of employee is: " + e);
-		}
+		System.out.println("First name for employee with id = 1 is: " + name);
+
+//		for(Object e: reslt){
+//			System.out.println("Fetched first name of employee is: " + e);
+//		}
 
 		transaction.commit();
 		}
