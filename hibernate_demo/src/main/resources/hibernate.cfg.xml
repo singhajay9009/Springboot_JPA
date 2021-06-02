@@ -14,6 +14,8 @@
         <property name="hibernate.dialect">org.hibernate.dialect.ProgressDialect</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.factory.region_factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory.class</property>
         <mapping resource="com.ajay.jpa.hibernate.demo.entity.Employee.class" />
     </session-factory>
 </hibernate-configuration>
