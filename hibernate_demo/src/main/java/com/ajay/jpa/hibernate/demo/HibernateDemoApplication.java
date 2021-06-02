@@ -1,7 +1,5 @@
 package com.ajay.jpa.hibernate.demo;
 
-//import javax.persistence.Query;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -32,8 +30,6 @@ public class HibernateDemoApplication {
 
 		Transaction transaction = session.beginTransaction();
 		try{
-			//SpringApplication.run(HibernateDemoApplication.class, args);
-
 			String inputString = "11-11-2012";
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			LocalDate inputDate = LocalDate.parse(inputString,formatter);
