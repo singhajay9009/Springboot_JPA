@@ -3,8 +3,10 @@ package com.ajay.jpa.hibernate.demo;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 import com.ajay.jpa.hibernate.demo.entity.Employee;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -92,9 +94,17 @@ public class HibernateDemoApplication {
 
 		System.out.println("First name for employee with id = 1 is: " + name);
 
-//		for(Object e: reslt){
-//			System.out.println("Fetched first name of employee is: " + e);
-//		}
+		// Fetching only respective columns
+
+		Query query4 = session.createSQLQuery("Select first_name, last_name from employee where emp_id >2");
+		query4.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+
+		List employees = query4.list();
+
+		for(Object o: employees){
+			Map m = (Map)o;
+			System.out.println("First name is: " + m.get("first_name") + ". Last name is: " + m.get("last_name"));
+		}
 
 		transaction.commit();
 		}
