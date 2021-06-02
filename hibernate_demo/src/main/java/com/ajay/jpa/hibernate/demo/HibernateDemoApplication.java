@@ -117,6 +117,13 @@ public class HibernateDemoApplication {
 		System.out.println("Employee is: " + emp);
 
 		transaction.commit();
+
+		Employee empFromSessionOne = session.get(Employee.class, 4);
+		session.close();
+
+		Session session2 = sessionFactory.openSession();
+		Employee empFromSessionTwo = session2.get(Employee.class, 4);
+		session2.close();
 		}
 
 
