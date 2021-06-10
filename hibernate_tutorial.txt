@@ -7,3 +7,8 @@ object state-
  on remove()  -- Removed
 
   - When we do get() then we fetch the object , but it also gets into persisted state.
+
+
+---cache-
+
+Whenever we fire a query hibernate checks if it has value in first level cache. If yes, it retrieves from it. So it does not fire query in database.
