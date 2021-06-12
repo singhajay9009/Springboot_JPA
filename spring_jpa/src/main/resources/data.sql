@@ -8,3 +8,8 @@
 -- );
 
 Select * from product;
+
+--create table employee_id (
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR (10) NOT NULL
+--);

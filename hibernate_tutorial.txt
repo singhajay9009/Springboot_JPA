@@ -40,5 +40,6 @@ IDENTITY: Persistence Provider relies on Autoincrement field. So when we create 
 
 SEQUENCE: We create sequence in databases like oracle and define custom logic to increment the primary key.
 We provide this sequence to our hibernate and it runs this sequence to generate pri key.
+databse like mysql does not support seq.
 
 TABLE: we use a special table. Perisstence table generates value in column in table and use that as a pri key for the main table.Nest time it goes to that special table and see what was previous value and based on that it generates new value and use it for the current record.

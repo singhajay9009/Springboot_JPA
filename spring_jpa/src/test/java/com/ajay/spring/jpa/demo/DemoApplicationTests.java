@@ -1,6 +1,8 @@
 package com.ajay.spring.jpa.demo;
 
+import com.ajay.spring.jpa.demo.entity.Employee;
 import com.ajay.spring.jpa.demo.entity.Product;
+import com.ajay.spring.jpa.demo.repository.EmployeeRepository;
 import com.ajay.spring.jpa.demo.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +16,9 @@ class DemoApplicationTests {
 
 	@Autowired
 	ProductRepository productRepository;
+
+	@Autowired
+	EmployeeRepository employeeRepository;
 
 	@Test
 	void contextLoads() {
@@ -57,5 +62,29 @@ class DemoApplicationTests {
 		Assertions.assertNotNull(productRepository.save(product));
 
 	}
+
+	@Test
+	public void testCount() {
+		long countRecords = productRepository.count();
+		Assertions.assertEquals(1, countRecords);
+	}
+
+	@Test
+	public void testExist(){
+		if (productRepository.existsById(1)) {
+			productRepository.delete(productRepository.findById(1).get());
+		}
+	}
+
+	@Test
+	public void testEmployeeIdGeneration(){
+		Employee employee = Employee.builder()
+				.name("John White")
+				.build();
+
+		employeeRepository.save(employee);
+
+	}
+
 
 }
