@@ -12,3 +12,33 @@ object state-
 ---cache-
 
 Whenever we fire a query hibernate checks if it has value in first level cache. If yes, it retrieves from it. So it does not fire query in database.
+----------------------------------------------------------------
+             ======= JPA  ========
+
+--JPA is implemented by Hibernate
+-- CrudRepository interface is implemented by EmployeeRepository interface which we create
+-- Springboot app scans through class path and understands that it needs to build the dependencies ( dependency management ) for us
+-- It also scans through properties / yml file and find that tehre is datasource defined so it needs to create datasource.
+-- Now, using defined Datasource hibernate create EnitytManagerFactory (emf) and EntitytManager (Em)
+-- When we run springboot app, then springboot app creates a proxy implementation of EmployeeRepository interface. and when we call the methods like, find, save, findaAll, delete, internally springboot invokes the method on Em through the class it generated on the fly.
+-- Em then performs the related CRUD operations on database.
+
+-------------
+
+Primary Key. ID generation strategy--
+
+GenerationType.AUTO
+GenerationType.IDENTITY
+GenerationType.SEQUENCE
+GenerationType.TABLE
+
+GenerationType is an enumeration from JPA, which is used to configure Id generation strategy
+
+AUTO: Persistence provider like hibernate goes ahead and talk to database and figure which strategy it supports out of ( IDENTITY, SEQUENCE or TABLE).
+
+IDENTITY: Persistence Provider relies on Autoincrement field. So when we create table in db we also need to configure the primary key to be auto-incremented. Hibernate takes auto-incremented values of this field.
+
+SEQUENCE: We create sequence in databases like oracle and define custom logic to increment the primary key.
+We provide this sequence to our hibernate and it runs this sequence to generate pri key.
+
+TABLE: we use a special table. Perisstence table generates value in column in table and use that as a pri key for the main table.Nest time it goes to that special table and see what was previous value and based on that it generates new value and use it for the current record.
