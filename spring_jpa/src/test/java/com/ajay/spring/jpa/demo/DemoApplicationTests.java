@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.Arrays;
 import java.util.List;
@@ -167,6 +170,18 @@ class DemoApplicationTests {
 	@Test
 	public void testFindByIdsIn(){
 		List<Product> lstProds = productRepository.findByIdIn(Arrays.asList(2,3,4));  // finding headphone, id = 5
+
+		List<Product> lstProducts = Optional.ofNullable(lstProds).orElseThrow(NullPointerException::new);
+
+		lstProducts.forEach(p -> System.out.println(p.getName()));
+
+	}
+
+	@Test
+	public void testFindByNamesIn(){
+		Pageable pageable = PageRequest.of(1,2, Sort.Direction.ASC, "name"); // param order -> page index, page size, pageable
+
+		List<Product> lstProds = productRepository.findByNameIn(Arrays.asList("macbook","dell", "nikon", "sandisk", "dell"), pageable);  // finding headphone, id = 5
 
 		List<Product> lstProducts = Optional.ofNullable(lstProds).orElseThrow(NullPointerException::new);
 
