@@ -27,3 +27,8 @@ Select * from product;
 --    gen_name VARCHAR(50) PRIMARY KEY,
 --    next_val int   // this column name must be chosen for postgres
 --);
+
+-- ===========================
+-- Insert into product values (2, 'dell', 'laptop', 400.000);
+-- Insert into product values (3, 'nikon', 'camera', 600.000);
+-- Insert into product values (4, 'sandisk', 'hard disk', 100.000);

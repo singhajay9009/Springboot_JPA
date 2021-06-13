@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
@@ -66,7 +68,7 @@ class DemoApplicationTests {
 	@Test
 	public void testCount() {
 		long countRecords = productRepository.count();
-		Assertions.assertEquals(1, countRecords);
+		System.out.println("Count of Records >>>>>>>> : " + countRecords);
 	}
 
 	@Test
@@ -83,6 +85,92 @@ class DemoApplicationTests {
 				.build();
 
 		employeeRepository.save(employee);
+
+	}
+
+	@Test
+	public void testFindProductByPrice(){
+		Optional<List<Product>> optListProducts = productRepository.findByPrice(100.000);
+
+		List<Product> lstProducts = optListProducts.orElseThrow(NullPointerException::new);
+
+		for (Product lstProduct : lstProducts) {
+			Double price = lstProduct.getPrice();
+			Assertions.assertEquals(100.000, price, ()-> "Price not 100.000");
+
+	//		Assertions.assertEquals(100.000, lstProduct.getPrice());
+
+		}
+
+	}
+
+	@Test
+	public void testFindProductByName(){
+		List<Product> lstProds = productRepository.findByName("dell");
+
+		List<Product> lstProducts = Optional.ofNullable(lstProds).orElseThrow(NullPointerException::new);
+
+		lstProducts.forEach(p -> Assertions.assertEquals("dell", p.getName()));
+
+	}
+
+	@Test
+	public void testFindByMultipleFields(){
+		Optional<List<Product>> lstProds = productRepository.findByNameAndPrice("dell", 100.000);
+
+		List<Product> lstProducts = lstProds.orElseThrow(NullPointerException::new);
+
+		Assertions.assertEquals(1, lstProducts.size());
+
+	}
+
+	@Test
+	public void testFindByPriceGreaterThan(){
+		List<Product> lstProds = productRepository.findByPriceGreaterThan(300.000);
+
+		List<Product> lstProducts = Optional.ofNullable(lstProds).orElseThrow(NullPointerException::new);
+
+		lstProducts.forEach(p -> System.out.println(p.getName()));
+
+	}
+
+	@Test
+	public void testFindByDescContains(){
+		List<Product> lstProds = productRepository.findByDescContains("disk");
+
+		List<Product> lstProducts = Optional.ofNullable(lstProds).orElseThrow(NullPointerException::new);
+
+		lstProducts.forEach(p -> System.out.println(p.getName()));
+
+	}
+
+	@Test
+	public void testFindByPriceBetween(){
+		List<Product> lstProds = productRepository.findByPriceBetween(300.000, 900.000);
+
+		List<Product> lstProducts = Optional.ofNullable(lstProds).orElseThrow(NullPointerException::new);
+
+		lstProducts.forEach(p -> System.out.println(p.getName()));
+
+	}
+
+	@Test
+	public void testFindByDescLike(){
+		List<Product> lstProds = productRepository.findByDescLike("%ph%");  // finding headphone, id = 5
+
+		List<Product> lstProducts = Optional.ofNullable(lstProds).orElseThrow(NullPointerException::new);
+
+		lstProducts.forEach(p -> System.out.println(p.getName()));
+
+	}
+
+	@Test
+	public void testFindByIdsIn(){
+		List<Product> lstProds = productRepository.findByIdIn(Arrays.asList(2,3,4));  // finding headphone, id = 5
+
+		List<Product> lstProducts = Optional.ofNullable(lstProds).orElseThrow(NullPointerException::new);
+
+		lstProducts.forEach(p -> System.out.println(p.getName()));
 
 	}
 

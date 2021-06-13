@@ -8,6 +8,7 @@ spring rest-
  -basic, 
  -file based operations,
  -paging and sorting for data returned
+ -unit test (mockito)
 ---
 
 Java-
