@@ -32,3 +32,11 @@ Select * from product;
 -- Insert into product values (2, 'dell', 'laptop', 400.000);
 -- Insert into product values (3, 'nikon', 'camera', 600.000);
 -- Insert into product values (4, 'sandisk', 'hard disk', 100.000);
+
+-- ============================
+--create table student (
+--    id SERIAL PRIMARY KEY,
+--    lname VARCHAR (20),
+--    fname VARCHAR (20),
+--    score int
+--);

@@ -43,3 +43,20 @@ We provide this sequence to our hibernate and it runs this sequence to generate 
 databse like mysql does not support seq.
 
 TABLE: we use a special table. Perisstence table generates value in column in table and use that as a pri key for the main table.Nest time it goes to that special table and see what was previous value and based on that it generates new value and use it for the current record.
+
+
+
+======== Paging And Sorting in JPA ==================
+-- Paging and sorting is provided by JPA 
+-- Pageable interface is used to refer to an object of type PageRequest class
+      // Pageable pageable = PageRequest.of(0,2);
+
+-- find method accepts an arg of type Pageable, and returns a collection of entities referred by an iterable of tyep 'Page' interface
+   // Page<Product> lstProduct = pagingAndSortingRepository.findAll(pageable);
+   // lstProduct.forEach(p -> System.out.println(p.getName()));   
+
+-- //Pageable pageable = PageRequest.of(1,2, Sort.Direction.ASC, "name");
+   args are index of page, size of page, direction, sort property (column)
+
+--  You can also define a pageable param in custom find method and it would serve for paging and Sorting
+   // List<Product> findByNameIn(List<String> names, Pageable pageable);
