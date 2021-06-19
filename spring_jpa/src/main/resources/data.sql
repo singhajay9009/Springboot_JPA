@@ -40,3 +40,11 @@ Select * from product;
 --    fname VARCHAR (20),
 --    score int
 --);
+
+create table payment (
+  id int PRIMARY KEY,
+  pmode VARCHAR(2),
+  amount NUMERIC (8,3),
+  cardnumber VARCHAR(20),
+  checknumber VARCHAR(20)
+ );
