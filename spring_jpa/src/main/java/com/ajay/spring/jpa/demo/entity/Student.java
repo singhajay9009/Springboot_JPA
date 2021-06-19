@@ -16,7 +16,9 @@ import javax.persistence.*;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //It is imp that we use strategy as 'IDENTITY' here,. If we use 'AUTO' an error comes like "hibernate_sequence is not a sequence in postgres
+    // In Postgres, it expects a table 'hibernate_sequnce' in case of AUTO
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name= "lname")

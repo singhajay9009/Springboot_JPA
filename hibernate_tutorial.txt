@@ -60,3 +60,11 @@ TABLE: we use a special table. Perisstence table generates value in column in ta
 
 --  You can also define a pageable param in custom find method and it would serve for paging and Sorting
    // List<Product> findByNameIn(List<String> names, Pageable pageable);
+
+-- For DML Operations we need to use @Transactional in springboot, to instruct spring we are performing a Transaction
+   /*    
+    @Modifying
+    @Transactional
+    @Query("delete from Student where firstName=:name")
+    void deleteStudent(@Param("name") String firstName);
+   */
