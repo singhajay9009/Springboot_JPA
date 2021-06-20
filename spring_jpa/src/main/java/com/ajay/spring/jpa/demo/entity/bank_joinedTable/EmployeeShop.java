@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @Table(name = "employee_shop")
 @PrimaryKeyJoinColumn(name = "id") // this is column name from child table
-public class Employee extends Shop {
+public class EmployeeShop extends Shop {
 
     @Id
     private int id;

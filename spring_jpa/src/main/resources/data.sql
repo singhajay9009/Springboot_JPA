@@ -91,3 +91,16 @@ Select * from product;
 --    age int,
 --    foreign key (id) REFERENCES shop(id)
 --);
+
+-- ========================= Hibernate Embeddable ================================
+create table user (
+  id int PRIMARY KEY,
+  name VARCHAR(20)
+);
+
+create table address (
+    street VARCHAR(10),
+    city VARCHAR(10),
+    zip VARCHAR(10),
+    country VARCHAR(10)
+);
