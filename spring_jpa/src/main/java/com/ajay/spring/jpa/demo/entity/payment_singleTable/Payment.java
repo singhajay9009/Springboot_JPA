@@ -1,4 +1,4 @@
-package com.ajay.spring.jpa.demo.entity.payment;
+package com.ajay.spring.jpa.demo.entity.payment_singleTable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

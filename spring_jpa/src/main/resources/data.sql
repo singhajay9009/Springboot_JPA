@@ -41,10 +41,53 @@ Select * from product;
 --    score int
 --);
 
-create table payment (
-  id int PRIMARY KEY,
-  pmode VARCHAR(2),
-  amount NUMERIC (8,3),
-  cardnumber VARCHAR(20),
-  checknumber VARCHAR(20)
- );
+--create table payment (
+--  id int PRIMARY KEY,
+--  pmode VARCHAR(2),
+--  amount NUMERIC (8,3),
+--  cardnumber VARCHAR(20),
+--  checknumber VARCHAR(20)
+-- );
+-- ///////////////////  Table_PER_Class ///////////////////////////////
+--create table bank (
+--    id int PRIMARY KEY,
+--    customer_type VARCHAR (10)
+--);
+--
+--drop table regular_customer;
+--drop table privileged_customer;
+--
+--create table regular_customer(
+--    id int PRIMARY KEY,
+--    account_number int,
+--    customer_type VARCHAR(10),
+--    name VARCHAR(20)
+--);
+--
+--create table privileged_customer (
+--    id int PRIMARY KEY,
+--    account_number int,
+--    customer_type VARCHAR(10),
+--    name VARCHAR(20)
+--);
+--
+-- ======================== Join Table strategy ======================
+--
+--create table shop (
+--    id int PRIMARY KEY,
+--    type VARCHAR (10)
+--);
+--
+--create table employee_shop (
+--    id int PRIMARY KEY,
+--    name VARCHAR(20),
+--    age int,
+--    foreign key (id) REFERENCES shop(id)
+--);
+--
+--create table customer_shop (
+--    id int PRIMARY KEY,
+--    name VARCHAR(20),
+--    age int,
+--    foreign key (id) REFERENCES shop(id)
+--);
