@@ -68,3 +68,11 @@ TABLE: we use a special table. Perisstence table generates value in column in ta
     @Query("delete from Student where firstName=:name")
     void deleteStudent(@Param("name") String firstName);
    */
+
+========================== Entity Relationship ======================
+-- csascase = "persist"  //for insert parent and child
+   cascade = "merge" // for update both
+   cascade = "remove" // for delete
+   cascade = "refresh" // if you refresh parent obj using EntityManager, child obj should also get refreshed
+   cascade = "detach"
+   cascade = "All"

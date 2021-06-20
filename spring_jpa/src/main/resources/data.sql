@@ -93,14 +93,25 @@ Select * from product;
 --);
 
 -- ========================= Hibernate Embeddable ================================
-create table user (
-  id int PRIMARY KEY,
-  name VARCHAR(20)
-);
+--create table user_table (
+--  id int PRIMARY KEY,
+--  name VARCHAR(20),
+--  street VARCHAR(10),
+--  city VARCHAR(10),
+--  zip VARCHAR(10),
+--  country VARCHAR(10)
+--);
 
-create table address (
-    street VARCHAR(10),
-    city VARCHAR(10),
-    zip VARCHAR(10),
-    country VARCHAR(10)
-);
+-- ========================= Entity Relationship ===========================
+--create table candidate (
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR(20)
+--);
+
+--create table phone_number(
+--    id SERIAL PRIMARY KEY,
+--    candidate_id int,
+--    ph_number int,
+--    type VARCHAR (10),
+--    FOREIGN KEY (candidate_id) REFERENCES candidate(id)
+--);
