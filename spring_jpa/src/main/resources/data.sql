@@ -115,3 +115,18 @@ Select * from product;
 --    type VARCHAR (10),
 --    FOREIGN KEY (candidate_id) REFERENCES candidate(id)
 --);
+
+-- =========================== OneToMany =====================================
+
+--create table teacher (
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR(20),
+--    age int
+--);
+
+--create table course (
+--    course_id SERIAL PRIMARY KEY,
+--    title VARCHAR,
+--    teacher_id int,
+--    FOREIGN KEY (teacher_id) REFERENCES teacher(id)
+--);
