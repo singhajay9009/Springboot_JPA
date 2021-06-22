@@ -6,6 +6,7 @@ import com.ajay.spring.jpa.demo.repository.TeacherRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -34,5 +35,14 @@ public class TeacherTest {
 
         teacherRepository.save(teacher);
 
+    }
+
+    @Test
+    @Transactional // This annotation is required to tell springboot that it is a transaction
+    // and Springboot will ensure to make the fetch work even with default 'Lazy loading' of Course objects
+    // If we remove @Transactional, it will fail and give error
+    // The other way is enable fetch = FETCHTYPE.EAGER in @OneToMany in Teacher entity.;
+    public void testFetchTeacherCourses() {
+        teacherRepository.findAll().forEach(p -> p.getCourses().forEach(c -> System.out.println(c.getTitle())));
     }
 }

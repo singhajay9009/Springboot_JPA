@@ -130,3 +130,31 @@ Select * from product;
 --    teacher_id int,
 --    FOREIGN KEY (teacher_id) REFERENCES teacher(id)
 --);
+
+-- =============================ManyToOne ===================================
+
+--create table owner (
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR
+--);
+--
+--create table vehicle (
+--    vehicle_id SERIAL PRIMARY KEY,
+--    company VARCHAR,
+--    owner_id int,
+--    FOREIGN KEY (owner_id) REFERENCES owner(id)
+--);
+
+
+-- =========================== OneToMany - BiDirectional ========================
+--create table merchant (
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR
+--);
+--
+--create table items (
+--    item_id SERIAL PRIMARY KEY,
+--    item_name VARCHAR,
+--    merchant_id int,
+--    FOREIGN KEY(merchant_id) REFERENCES merchant(id)
+--)
