@@ -36,4 +36,13 @@ Git commit - Best Practice
       feature/main  (after rebase) : m1-->m2-->m3-->f1--f2
     
       Now if we notice our git graph will look linear and cleaner, also both private and main are at same level now.
+
+===================================================
+
+// delete branch locally
+git branch -d localBranchName
+
+// delete branch remotely
+git push origin --delete remoteBranchName
+========================================
     

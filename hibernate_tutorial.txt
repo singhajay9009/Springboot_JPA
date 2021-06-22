@@ -6,4 +6,77 @@ object state-
  on detach()  -- Detached
  on remove()  -- Removed
 
+
   - When we do get() then we fetch the object , but it also gets into persisted state.
+
+
+---cache-
+
+Whenever we fire a query hibernate checks if it has value in first level cache. If yes, it retrieves from it. So it does not fire query in database.
+----------------------------------------------------------------
+             ======= JPA  ========
+
+--JPA is implemented by Hibernate
+-- CrudRepository interface is implemented by EmployeeRepository interface which we create
+-- Springboot app scans through class path and understands that it needs to build the dependencies ( dependency management ) for us
+-- It also scans through properties / yml file and find that tehre is datasource defined so it needs to create datasource.
+-- Now, using defined Datasource hibernate create EnitytManagerFactory (emf) and EntitytManager (Em)
+-- When we run springboot app, then springboot app creates a proxy implementation of EmployeeRepository interface. and when we call the methods like, find, save, findaAll, delete, internally springboot invokes the method on Em through the class it generated on the fly.
+-- Em then performs the related CRUD operations on database.
+
+-------------
+
+Primary Key. ID generation strategy--
+
+GenerationType.AUTO
+GenerationType.IDENTITY
+GenerationType.SEQUENCE
+GenerationType.TABLE
+
+GenerationType is an enumeration from JPA, which is used to configure Id generation strategy
+
+AUTO: Persistence provider like hibernate goes ahead and talk to database and figure which strategy it supports out of ( IDENTITY, SEQUENCE or TABLE).
+
+IDENTITY: Persistence Provider relies on Autoincrement field. So when we create table in db we also need to configure the primary key to be auto-incremented. Hibernate takes auto-incremented values of this field.
+
+SEQUENCE: We create sequence in databases like oracle and define custom logic to increment the primary key.
+We provide this sequence to our hibernate and it runs this sequence to generate pri key.
+databse like mysql does not support seq.
+
+TABLE: we use a special table. Perisstence table generates value in column in table and use that as a pri key for the main table.Nest time it goes to that special table and see what was previous value and based on that it generates new value and use it for the current record.
+
+
+
+======== Paging And Sorting in JPA ==================
+-- Paging and sorting is provided by JPA 
+-- Pageable interface is used to refer to an object of type PageRequest class
+      // Pageable pageable = PageRequest.of(0,2);
+
+-- find method accepts an arg of type Pageable, and returns a collection of entities referred by an iterable of tyep 'Page' interface
+   // Page<Product> lstProduct = pagingAndSortingRepository.findAll(pageable);
+   // lstProduct.forEach(p -> System.out.println(p.getName()));   
+
+-- //Pageable pageable = PageRequest.of(1,2, Sort.Direction.ASC, "name");
+   args are index of page, size of page, direction, sort property (column)
+
+--  You can also define a pageable param in custom find method and it would serve for paging and Sorting
+   // List<Product> findByNameIn(List<String> names, Pageable pageable);
+
+-- For DML Operations we need to use @Transactional in springboot, to instruct spring we are performing a Transaction
+   /*    
+    @Modifying
+    @Transactional
+    @Query("delete from Student where firstName=:name")
+    void deleteStudent(@Param("name") String firstName);
+   */
+
+========================== Entity Relationship ======================
+-- csascase = "persist"  //for insert parent and child
+   cascade = "merge" // for update both
+   cascade = "remove" // for delete
+   cascade = "refresh" // if you refresh parent obj using EntityManager, child obj should also get refreshed
+   cascade = "detach"
+   cascade = "All"
+=======
+  - When we do get() then we fetch the object , but it also gets into persisted state.
+

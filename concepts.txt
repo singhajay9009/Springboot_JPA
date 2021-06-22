@@ -1,0 +1,63 @@
+checklist--
+
+hibernate
+JPA
+ - Transaction Management
+ - Relationship
+spring rest- 
+ -basic, 
+ -file based operations,
+ -paging and sorting for data returned
+ -unit test (mockito)
+---
+
+Java-
+ - Basic concepts - Programing Practice
+ - Multithreading
+ - Concurrency
+
+spring cloud - if possible
+---
+
+spring security
+ -basic
+ -OAuth
+---
+
+
+splunk / kibana - logging with spring
+monitoring - using actuator or somethign else
+---
+
+Distributed transaction--
+ -spring- data cache / Redis
+ -API gateway
+---
+
+Git
+ -basic command
+---
+
+Kafka  (not super imp.)
+ -operations
+---
+
+
+Databses
+ - SQL
+ - NoSQL
+---
+
+
+DS & Algo
+ - Concepts
+ - Programing Practice
+---
+
+
+
+
+
+
+
+

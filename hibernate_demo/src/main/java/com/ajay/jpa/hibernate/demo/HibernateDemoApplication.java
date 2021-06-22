@@ -129,8 +129,6 @@ public class HibernateDemoApplication {
 		session2.close();
 		}
 
-
-
 		finally{
 
 			//session.close();
