@@ -6,6 +6,7 @@ object state-
  on detach()  -- Detached
  on remove()  -- Removed
 
+
   - When we do get() then we fetch the object , but it also gets into persisted state.
 
 
@@ -76,3 +77,6 @@ TABLE: we use a special table. Perisstence table generates value in column in ta
    cascade = "refresh" // if you refresh parent obj using EntityManager, child obj should also get refreshed
    cascade = "detach"
    cascade = "All"
+=======
+  - When we do get() then we fetch the object , but it also gets into persisted state.
+
