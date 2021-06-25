@@ -7,7 +7,7 @@
 -- price numeric (8,3)
 -- );
 
-Select * from product;
+-- Select * from product;
 
 -- Create this table to demonstrate id generation strategy : IDENTITY
 --create table employee_id (
@@ -152,9 +152,30 @@ Select * from product;
 --    name VARCHAR
 --);
 --
+
+Select * from merchant;
+
 --create table items (
 --    item_id SERIAL PRIMARY KEY,
 --    item_name VARCHAR,
 --    merchant_id int,
 --    FOREIGN KEY(merchant_id) REFERENCES merchant(id)
 --)
+
+-- =========================== ManyToMany ===========================
+--create table programmer(
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR
+--);
+
+--create table project(
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR
+--);
+--
+--create table programmer_project (
+--    programmer_id int,
+--    project_id int,
+--    FOREIGN KEY (programmer_id) REFERENCES programmer(id),
+--    FOREIGN KEY (project_id) REFERENCES project(id)
+--);

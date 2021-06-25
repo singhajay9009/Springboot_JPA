@@ -17,7 +17,7 @@ public class Teacher {
 
     private int age;
 
-    @OneToMany(cascade = CascadeType.ALL)  //fetch type All will ensure child is loaded as soon as parent is loaded
+    @OneToMany(cascade = CascadeType.ALL)  //fetch type eager will ensure child is loaded as soon as parent is loaded
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Set<Course> courses;
 }

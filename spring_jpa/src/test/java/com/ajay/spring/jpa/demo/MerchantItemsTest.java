@@ -26,10 +26,17 @@ public class MerchantItemsTest {
         merchant.setName("Lucifer");
     //    merchant.setProducts(new HashSet<>(Arrays.asList(product, product1)));
 
-        merchant.addProduct(items);
-        merchant.addProduct(items1);
+        merchant.addItem(items);
+        merchant.addItem(items1);
 
         merchantRepository.save(merchant);
+
+    }
+
+    @Test
+    public void testRemoveMerchantItem(){
+        Merchant merchant = merchantRepository.findById(2).get();
+        merchantRepository.delete(merchant);
 
     }
 }
