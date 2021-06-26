@@ -7,7 +7,7 @@
 -- price numeric (8,3)
 -- );
 
-Select * from product;
+-- Select * from product;
 
 -- Create this table to demonstrate id generation strategy : IDENTITY
 --create table employee_id (
@@ -123,7 +123,11 @@ Select * from product;
 --    name VARCHAR(20),
 --    age int
 --);
+<<<<<<< HEAD
 
+=======
+--
+>>>>>>> 50b9da701474ae84a87bff71836bd596a174e56c
 --create table course (
 --    course_id SERIAL PRIMARY KEY,
 --    title VARCHAR,
@@ -152,9 +156,51 @@ Select * from product;
 --    name VARCHAR
 --);
 --
+<<<<<<< HEAD
+=======
+
+Select * from merchant;
+
+>>>>>>> 50b9da701474ae84a87bff71836bd596a174e56c
 --create table items (
 --    item_id SERIAL PRIMARY KEY,
 --    item_name VARCHAR,
 --    merchant_id int,
 --    FOREIGN KEY(merchant_id) REFERENCES merchant(id)
 --)
+<<<<<<< HEAD
+=======
+
+-- =========================== ManyToMany ===========================
+--create table programmer(
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR
+--);
+
+--create table project(
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR
+--);
+--
+--create table programmer_project (
+--    programmer_id int,
+--    project_id int,
+--    FOREIGN KEY (programmer_id) REFERENCES programmer(id),
+--    FOREIGN KEY (project_id) REFERENCES project(id)
+--);
+
+-- ========================= OneToOne ============================
+--create table person (
+--    id int PRIMARY KEY,
+--    name VARCHAR,
+--    age int
+--);
+--
+--create table license (
+--    id int PRIMARY KEY,
+--    valid_from Date,
+--    valid_to Date,
+--    person_id int,
+--    FOREIGN KEY ( person_id)REFERENCES person (id)
+--);
+>>>>>>> 50b9da701474ae84a87bff71836bd596a174e56c

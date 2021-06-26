@@ -1,6 +1,5 @@
 package com.ajay.spring.jpa.demo.entity.bank_joinedTable;
 
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Entity;

@@ -20,14 +20,19 @@ public class Merchant {
 
     private String name;
 
-    @OneToMany(mappedBy = "merchant", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "merchant", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Items> items;
 
-    public void addProduct(Items item){
+    public void addItem(Items item){
         Optional.ofNullable(item).ifPresent(itm -> {
             this.items = Optional.ofNullable(this.items).orElseGet(HashSet::new);
             this.items.add(itm);
             itm.setMerchant(this);
         });
+    }
+
+    public void removeItem(Items item){
+        items.remove(item);
+        item.setMerchant(null);
     }
 }
