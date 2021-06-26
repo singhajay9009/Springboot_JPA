@@ -123,7 +123,11 @@
 --    name VARCHAR(20),
 --    age int
 --);
+<<<<<<< HEAD
+
+=======
 --
+>>>>>>> 50b9da701474ae84a87bff71836bd596a174e56c
 --create table course (
 --    course_id SERIAL PRIMARY KEY,
 --    title VARCHAR,
@@ -152,15 +156,20 @@
 --    name VARCHAR
 --);
 --
+<<<<<<< HEAD
+=======
 
 Select * from merchant;
 
+>>>>>>> 50b9da701474ae84a87bff71836bd596a174e56c
 --create table items (
 --    item_id SERIAL PRIMARY KEY,
 --    item_name VARCHAR,
 --    merchant_id int,
 --    FOREIGN KEY(merchant_id) REFERENCES merchant(id)
 --)
+<<<<<<< HEAD
+=======
 
 -- =========================== ManyToMany ===========================
 --create table programmer(
@@ -194,3 +203,4 @@ Select * from merchant;
 --    person_id int,
 --    FOREIGN KEY ( person_id)REFERENCES person (id)
 --);
+>>>>>>> 50b9da701474ae84a87bff71836bd596a174e56c
