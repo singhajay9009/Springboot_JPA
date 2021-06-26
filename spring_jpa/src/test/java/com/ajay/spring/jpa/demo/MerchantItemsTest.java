@@ -6,6 +6,10 @@ import com.ajay.spring.jpa.demo.repository.MerchantRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+
+import javax.transaction.Transactional;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 public class MerchantItemsTest {
@@ -17,13 +21,13 @@ public class MerchantItemsTest {
     public void testCreateMerchantProducts(){
 
         Items items = new Items();
-        items.setItemName("Cigar");
+        items.setItemName("Wine");
 
         Items items1 = new Items();
-        items1.setItemName("Pipe");
+        items1.setItemName("Whisky");
 
         Merchant merchant = new Merchant();
-        merchant.setName("Lucifer");
+        merchant.setName("Bella");
     //    merchant.setProducts(new HashSet<>(Arrays.asList(product, product1)));
 
         merchant.addItem(items);
@@ -34,9 +38,13 @@ public class MerchantItemsTest {
     }
 
     @Test
+    @Transactional
+    @Rollback(value = false)
     public void testRemoveMerchantItem(){
-        Merchant merchant = merchantRepository.findById(2).get();
-        merchantRepository.delete(merchant);
+        Merchant merchant = merchantRepository.findById(3).get();
+       // merchantRepository.re(merchant);
+        // will remove the very first item among the found ones
+        merchant.removeItem(merchant.getItems().stream().findFirst().get());
 
     }
 }

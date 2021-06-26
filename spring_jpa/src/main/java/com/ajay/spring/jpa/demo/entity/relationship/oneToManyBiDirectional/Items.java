@@ -22,5 +22,25 @@ public class Items {
     @ManyToOne
     @JoinColumn(name = "merchant_id", referencedColumnName = "id")
     private Merchant merchant;
+
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof PostComment )) return false;
+//        return id != null && id.equals(((PostComment) o).getId());
+//    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Items )) return false;
+        return itemId != 0 && itemId == ((Items) o).getItemId();
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
     
 }

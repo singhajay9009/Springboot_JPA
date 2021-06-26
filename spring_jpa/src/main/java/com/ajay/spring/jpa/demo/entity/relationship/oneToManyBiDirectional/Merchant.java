@@ -20,7 +20,7 @@ public class Merchant {
 
     private String name;
 
-    @OneToMany(mappedBy = "merchant", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "merchant", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Items> items;
 
     public void addItem(Items item){

@@ -21,16 +21,16 @@ public class TeacherTest {
     @Test
     public void testCreateTeacherCourses(){
         Course course = new Course();
-        course.setTitle("Data Science");
+        course.setTitle("Medical");
 
         Course course1 = new Course();
-        course1.setTitle("Python");
+        course1.setTitle("Sports");
 
         Set<Course> courseSet = new HashSet<>(Arrays.asList(course, course1));
 
         Teacher teacher = new Teacher();
-        teacher.setName("Matt");
-        teacher.setAge(42);
+        teacher.setName("Anna");
+        teacher.setAge(24);
         teacher.setCourses(courseSet);
 
         teacherRepository.save(teacher);

@@ -123,7 +123,7 @@
 --    name VARCHAR(20),
 --    age int
 --);
-
+--
 --create table course (
 --    course_id SERIAL PRIMARY KEY,
 --    title VARCHAR,
@@ -178,4 +178,19 @@ Select * from merchant;
 --    project_id int,
 --    FOREIGN KEY (programmer_id) REFERENCES programmer(id),
 --    FOREIGN KEY (project_id) REFERENCES project(id)
+--);
+
+-- ========================= OneToOne ============================
+--create table person (
+--    id int PRIMARY KEY,
+--    name VARCHAR,
+--    age int
+--);
+--
+--create table license (
+--    id int PRIMARY KEY,
+--    valid_from Date,
+--    valid_to Date,
+--    person_id int,
+--    FOREIGN KEY ( person_id)REFERENCES person (id)
 --);
