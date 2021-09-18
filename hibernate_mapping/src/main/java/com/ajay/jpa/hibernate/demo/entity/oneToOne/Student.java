@@ -1,11 +1,9 @@
-package com.ajay.jpa.hibernate.demo.entity;
+package com.ajay.jpa.hibernate.demo.entity.oneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Cache;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -36,6 +34,6 @@ public class Student {
     @Column(name = "hobbies")
     private String hobbies;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL) // Cascade if not put then you would need to explicitly save the other entity // session.save(entity)
     private LibraryMembership libraryMembership;
 }

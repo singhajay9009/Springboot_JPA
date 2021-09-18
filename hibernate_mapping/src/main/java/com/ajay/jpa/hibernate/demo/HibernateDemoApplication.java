@@ -1,8 +1,8 @@
 package com.ajay.jpa.hibernate.demo;
 
 import com.ajay.jpa.hibernate.demo.entity.Club;
-import com.ajay.jpa.hibernate.demo.entity.LibraryMembership;
-import com.ajay.jpa.hibernate.demo.entity.Student;
+import com.ajay.jpa.hibernate.demo.entity.oneToOne.LibraryMembership;
+import com.ajay.jpa.hibernate.demo.entity.oneToOne.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

@@ -1,5 +1,6 @@
-package com.ajay.jpa.hibernate.demo.entity;
+package com.ajay.jpa.hibernate.demo.entity.oneToOne;
 
+import com.ajay.jpa.hibernate.demo.entity.oneToOne.Student;
 import lombok.Data;
 
 import javax.persistence.*;
