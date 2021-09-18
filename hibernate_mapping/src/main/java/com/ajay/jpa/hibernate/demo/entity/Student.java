@@ -16,8 +16,8 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+//@Cacheable
+//@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Student {
 
     @Id
@@ -35,4 +35,7 @@ public class Student {
 
     @Column(name = "hobbies")
     private String hobbies;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private LibraryMembership libraryMembership;
 }
