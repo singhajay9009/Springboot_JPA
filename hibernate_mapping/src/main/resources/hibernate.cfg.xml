@@ -18,6 +18,8 @@
         <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property> -->
         <mapping resource="com.ajay.jpa.hibernate.demo.entity.oneToOne.Student.class" />
         <mapping resource="com.ajay.jpa.hibernate.demo.entity.Club.class" />
-        <mapping resource="com.ajay.jpa.hibernate.demo.entity.oneToOne.LibraryMembership.class" />
+        <mapping resource="com.ajay.jpa.hibernate.demo.entity.oneToOne.LibraryMembership.class"/>
+        <mapping resource="com.ajay.jpa.hibernate.demo.entity.oneToMany.Employee.class"/>
+        <mapping resource="com.ajay.jpa.hibernate.demo.entity.oneToMany.Asset.class"/>
     </session-factory>
 </hibernate-configuration>

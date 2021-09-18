@@ -1,6 +1,8 @@
 package com.ajay.jpa.hibernate.demo;
 
 import com.ajay.jpa.hibernate.demo.entity.Club;
+import com.ajay.jpa.hibernate.demo.entity.oneToMany.Asset;
+import com.ajay.jpa.hibernate.demo.entity.oneToMany.Employee;
 import com.ajay.jpa.hibernate.demo.entity.oneToOne.LibraryMembership;
 import com.ajay.jpa.hibernate.demo.entity.oneToOne.Student;
 import org.hibernate.Session;
@@ -12,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 public class HibernateDemoApplication {
@@ -22,6 +26,8 @@ public class HibernateDemoApplication {
 		configuration.addAnnotatedClass(Student.class);
 		configuration.addAnnotatedClass(Club.class);
 		configuration.addAnnotatedClass(LibraryMembership.class);
+		configuration.addAnnotatedClass(Employee.class);
+		configuration.addAnnotatedClass(Asset.class);
 	//	configuration.addPackage("com.ajay.jpa.hibernate.demo.entity");
 
 		StandardServiceRegistryBuilder builder =
@@ -33,6 +39,11 @@ public class HibernateDemoApplication {
 
 		Transaction transaction = session.beginTransaction();
 
+		/*
+
+		 One To One
+
+		 */
 		String inputString = "11-11-2012";
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		LocalDate inputDate = LocalDate.parse(inputString,formatter);
@@ -78,6 +89,36 @@ public class HibernateDemoApplication {
 
 		session.save(libraryMembership2);
 		session.save(student2);
+
+	/*
+
+		One to Many
+
+	 */
+
+		Employee employee = new Employee();
+		employee.setId(1);
+		employee.setName("Robert Carlos");
+
+		Asset asset = new Asset();
+		asset.setAssetId(101);
+		asset.setAssetName("Laptop");
+		asset.setEmployee(employee);
+
+		Asset asset2 = new Asset();
+		asset2.setAssetId(102);
+		asset2.setAssetName("RSA Token");
+		asset2.setEmployee(employee);
+
+		Set<Asset> assets = new HashSet<>();
+		assets.add(asset);
+		assets.add(asset2);
+
+		employee.setAssets(assets);
+
+		session.save(employee);
+	//	session.save(asset);
+	//	session.save(asset2);
 
 		transaction.commit();
 
