@@ -5,17 +5,18 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/mywp_1</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/mywp_3</property>
         <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">Rain@11</property>
-        <property name="hibernate.connection.pool_size">1</property>
+      <!--  <property name="hibernate.connection.password">Rain@11</property> -->
+        <property name="hibernate.connection.pool_size">2</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.ProgressDialect</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
-
-        <property name="hibernate.cache.use_second_level_cache">true</property>
-        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.jdbc.lob.non_contextual_creation">true</property>
+      <!--  <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property> -->
         <mapping resource="com.ajay.jpa.hibernate.demo.entity.Student.class" />
+        <mapping resource="com.ajay.jpa.hibernate.demo.entity.Club.class" />
     </session-factory>
 </hibernate-configuration>
