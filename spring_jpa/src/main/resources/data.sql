@@ -123,11 +123,8 @@
 --    name VARCHAR(20),
 --    age int
 --);
-<<<<<<< HEAD
 
-=======
---
->>>>>>> 50b9da701474ae84a87bff71836bd596a174e56c
+
 --create table course (
 --    course_id SERIAL PRIMARY KEY,
 --    title VARCHAR,
@@ -156,20 +153,15 @@
 --    name VARCHAR
 --);
 --
-<<<<<<< HEAD
-=======
 
 Select * from merchant;
 
->>>>>>> 50b9da701474ae84a87bff71836bd596a174e56c
 --create table items (
 --    item_id SERIAL PRIMARY KEY,
 --    item_name VARCHAR,
 --    merchant_id int,
 --    FOREIGN KEY(merchant_id) REFERENCES merchant(id)
 --)
-<<<<<<< HEAD
-=======
 
 -- =========================== ManyToMany ===========================
 --create table programmer(
@@ -191,16 +183,30 @@ Select * from merchant;
 
 -- ========================= OneToOne ============================
 --create table person (
---    id int PRIMARY KEY,
---    name VARCHAR,
---    age int
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR
 --);
---
+
 --create table license (
---    id int PRIMARY KEY,
+--    id SERIAL PRIMARY KEY,
+--    type VARCHAR,
 --    valid_from Date,
 --    valid_to Date,
 --    person_id int,
---    FOREIGN KEY ( person_id)REFERENCES person (id)
+--    FOREIGN KEY (person_id) REFERENCES person (id)
 --);
->>>>>>> 50b9da701474ae84a87bff71836bd596a174e56c
+
+--create table person2 (
+--    id SERIAL PRIMARY KEY,
+--    name VARCHAR
+--);
+--
+--create table license2 (
+--    id SERIAL PRIMARY KEY,
+--    type VARCHAR,
+--    valid_from Date,
+--    valid_to Date,
+--    person_id int,
+--    FOREIGN KEY (person_id) REFERENCES person2 (id)
+--);
+

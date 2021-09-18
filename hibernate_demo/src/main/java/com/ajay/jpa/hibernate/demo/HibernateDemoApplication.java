@@ -12,6 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -105,6 +106,12 @@ public class HibernateDemoApplication {
 			Map m = (Map)o;
 			System.out.println("First name is: " + m.get("first_name") + ". Last name is: " + m.get("last_name"));
 		}
+
+
+		/** Using criteria Query. It provides filteration and condition logic */
+//			Criteria crt = session.createCriteria(Employee.class);
+//			crt.add(Restrictions.gt("joiningDate", LocalDate.parse("11-11-2013",formatter)));
+//			List empList = crt.list();
 
 		// using get method to retrieve a specific Object
 		Employee emp = session.get(Employee.class, 2); // It fires the query in db. It retirves the rela object

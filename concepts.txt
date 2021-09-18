@@ -19,9 +19,13 @@ Java-
 spring cloud - if possible
 ---
 
+JVM internals 
+---
+
 spring security
  -basic
  -OAuth
+https://www.youtube.com/watch?v=X80nJ5T7YpE&ab_channel=JavaBrains
 ---
 
 

@@ -21,7 +21,7 @@ public class MerchantItemsTest {
     public void testCreateMerchantProducts(){
 
         Items items = new Items();
-<<<<<<< HEAD
+
         items.setItemName("Cigar");
 
         Items items1 = new Items();
@@ -30,22 +30,6 @@ public class MerchantItemsTest {
         Merchant merchant = new Merchant();
         merchant.setName("Lucifer");
     //    merchant.setProducts(new HashSet<>(Arrays.asList(product, product1)));
-
-        merchant.addProduct(items);
-        merchant.addProduct(items1);
-=======
-        items.setItemName("Wine");
-
-        Items items1 = new Items();
-        items1.setItemName("Whisky");
-
-        Merchant merchant = new Merchant();
-        merchant.setName("Bella");
-    //    merchant.setProducts(new HashSet<>(Arrays.asList(product, product1)));
-
-        merchant.addItem(items);
-        merchant.addItem(items1);
->>>>>>> 50b9da701474ae84a87bff71836bd596a174e56c
 
         merchantRepository.save(merchant);
 

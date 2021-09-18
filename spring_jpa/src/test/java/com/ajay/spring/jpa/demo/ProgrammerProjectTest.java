@@ -17,8 +17,8 @@ public class ProgrammerProjectTest {
     @Autowired
     ProgrammerRepository programmerRepository;
 
-    @Autowired
-    ProjectRepository projectRepository;
+   // @Autowired
+    //ProjectRepository projectRepository;
 
 
     @Test

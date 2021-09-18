@@ -27,7 +27,7 @@ Whenever we fire a query hibernate checks if it has value in first level cache. 
 -------------
 
 Primary Key. ID generation strategy--
-
+	
 GenerationType.AUTO
 GenerationType.IDENTITY
 GenerationType.SEQUENCE
@@ -71,7 +71,7 @@ TABLE: we use a special table. Perisstence table generates value in column in ta
    */
 
 ========================== Entity Relationship ======================
--- csascase = "persist"  //for insert parent and child
+-- csacade = "persist"  //for insert parent and child
    cascade = "merge" // for update both
    cascade = "remove" // for delete
    cascade = "refresh" // if you refresh parent obj using EntityManager, child obj should also get refreshed
@@ -79,4 +79,9 @@ TABLE: we use a special table. Perisstence table generates value in column in ta
    cascade = "All"
 =======
   - When we do get() then we fetch the object , but it also gets into persisted state.
+
+========================
+--To Enable first level cache, we just need to put @Transactional on top of device/ test methods
+-- EhCache is 2nd level cache. It can be configured in Ram / hard disk.
+
 
