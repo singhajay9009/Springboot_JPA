@@ -49,11 +49,35 @@ public class HibernateDemoApplication {
 		libraryMembership.setLibMemId(101);
 		libraryMembership.setIssueDate(LocalDate.parse("11-12-2014",formatter));
 		libraryMembership.setExpiryDate(LocalDate.parse("11-12-2016",formatter));
+		libraryMembership.setStudent(student);
 
 		student.setLibraryMembership(libraryMembership);
 
+
 		session.save(student);
-		session.save(libraryMembership);
+
+
+
+
+	// bi-directional
+
+		Student student2 = new Student();
+		student2.setFirstName("Ami");
+		student2.setLastName("Ford");
+		student2.setHobbies("Dancing");
+		student2.setStudentId(2);
+		student2.setJoiningDate(inputDate);
+
+		LibraryMembership libraryMembership2 = new LibraryMembership();
+		libraryMembership2.setLibMemId(102);
+		libraryMembership2.setIssueDate(LocalDate.parse("11-12-2014",formatter));
+		libraryMembership2.setExpiryDate(LocalDate.parse("11-12-2016",formatter));
+
+		student2.setLibraryMembership(libraryMembership2);
+		libraryMembership2.setStudent(student2);
+
+		session.save(libraryMembership2);
+		session.save(student2);
 
 		transaction.commit();
 

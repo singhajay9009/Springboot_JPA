@@ -2,10 +2,7 @@ package com.ajay.jpa.hibernate.demo.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -22,4 +19,7 @@ public class LibraryMembership {
 
     @Column(name = "expiry_date")
     private LocalDate expiryDate;
+
+    @OneToOne(mappedBy = "libraryMembership")
+    private Student student;
 }
