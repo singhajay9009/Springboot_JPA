@@ -18,13 +18,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
-public class Employee {
+public class Student {
 
     @Id
-    @SequenceGenerator(name="seq",sequenceName="emp_id_seq")
-    //@GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "emp_id", nullable = false)
-    private int emp_id;
+    @Column(name = "student_id", nullable = false)
+    private int studentId;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
